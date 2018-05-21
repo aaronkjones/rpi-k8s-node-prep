@@ -8,10 +8,10 @@ This was adapted from a gist by [alexellis](https://gist.github.com/alexellis/fd
 * I'm assuming you're using wired ethernet (Wi-Fi also works, but it's not recommended)
 
 ## Automatic preparation
-Simply run:  
+To prepare a node with the script, on each node run the following command:  
 
 `curl -sL \
-https://gist.githubusercontent.com/aaronkjones/d996f1a441bc80875fd4929866ca65ad/raw/354f2aded07426d3d64f41c2cbcd61a10370c7f7/prep.sh \
+https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh \
 | sudo sh`
 
 ## Manual node setup
