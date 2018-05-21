@@ -14,6 +14,16 @@ To prepare a node with the script, on each node run the following command:
 https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh \
 | sudo sh`
 
+This script:  
+* Installs Docker
+* Adds user to Docker group (pi or pirate depending if using Raspbian or Hypriot OS)
+* Allows you to install a different version of Docker
+* Disables Swap
+* Installs latest Kubernetes or specific version
+* Allows you to pin specific version of Docker and Kubernetes to prevent it being upgraded when `apt-get upgrade` is run
+* Backs up cmdline.txt
+* Adds cgroup options to `cmdline.txt`
+* If the node is a "master" it removes `KUBELET_NETWORK_ARGS` from `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf`
 ## Manual node setup
 
 #### Flash Raspbian to a fresh SD card.
