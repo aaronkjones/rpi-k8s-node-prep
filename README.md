@@ -10,9 +10,7 @@ This was adapted from a gist by [alexellis](https://gist.github.com/alexellis/fd
 ## Automatic preparation
 To prepare a node with the script, on each node run the following command:  
 
-`curl -sL \
-https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh \
-| sudo sh`
+`curl -sL https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh | sudo sh`
 
 This script:  
 * Installs Docker
