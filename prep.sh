@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-	read -r -p "Is this a Master or Slave node? (slave) " node_choice
+	read -r -p "Is this a Master or Slave node? (slave) " node_choice </dev/tty
 	case "$node_choice" in
 	master | Master) node_type=master ;;
 	slave | Slave) node_type=slave ;;
