@@ -1,4 +1,5 @@
 #!/bin/bash
+
 read -r -p "Is this a Master or Slave node? (slave) " node_choice
 case "$node_choice" in
 master | Master) node_type=master ;;
@@ -11,7 +12,7 @@ curl -sSL get.docker.com | sh
 
 if uname -a | grep hypriot; then
 	os_type=hypriot
-elif uname -a | grep raspbian; then
+elif [ "$(lsb_release -si)" = 'Raspbian' ]; then
 	os_type=raspbian
 fi
 
