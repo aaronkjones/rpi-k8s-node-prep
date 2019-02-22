@@ -101,15 +101,15 @@ main() {
 
 	echo
 
+	if ! [ -x "$(grep "cgroup" /boot/cmdline.txt)" ]; then
 	echo "Backing up cmdline.txt to /boot/cmdline_backup.txt"
 	sudo cp /boot/cmdline.txt /boot/cmdline_backup.txt
-
 	echo
-
 	echo Adding " cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory " to /boot/cmdline.txt
 	orig="$(head -n1 /boot/cmdline.txt) cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory"
 	echo "$orig" | sudo tee /boot/cmdline.txt
-
+	fi
+	
 	if [[ "$node_type" == "master" ]]; then
 		echo "Removing \"KUBELET_NETWORK_ARGS\" from 10-kubeadm.conf"
 		sudo sed -i '/KUBELET_NETWORK_ARGS=/d' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
