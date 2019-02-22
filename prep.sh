@@ -8,8 +8,10 @@ main() {
 	*) node_type=slave ;;
 	esac
 
-	echo "Installing Docker"
-	curl -sSL get.docker.com | sh
+	if ! [ -x "$(command -v docker)" ]; then
+		echo "Installing Docker"
+		curl -sSL get.docker.com | sh
+	fi
 
 	if uname -a | grep hypriot; then
 		os_type=hypriot
@@ -26,14 +28,14 @@ main() {
 		exit 1
 	fi
 
-	installed_docker_version=$(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 2)
+	installed_docker_version=$(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 3)
 	echo
 	echo "$installed_docker_version is currently installed."
 	read -r -p "Do you need to install a different version? (no) " docker_choice </dev/tty
 	echo
 	case "$docker_choice" in
 	y | Y)
-		apt-cache madison docker-ce | cut -d "|" -f 2 &&
+		apt-cache madison docker-ce | cut -d "|" -f 3 &&
 			echo
 		read -r -p "Which Docker version do you want to install (e.g. 18.05.0~ce~3-0~ubuntu)? " docker_version </dev/tty &&
 			sudo apt-get install -qy docker-ce="$docker_version"
@@ -71,7 +73,7 @@ main() {
 
 	echo
 
-	echo "Docker $(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 2) is installed"
+	echo "Docker $(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 3) is installed"
 	read -r -p "Do you want to prevent docker-ce from being upgraded? (no) " upgrade_docker </dev/tty
 	case $upgrade_docker in
 	y | Y)
