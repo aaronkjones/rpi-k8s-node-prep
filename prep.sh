@@ -48,8 +48,8 @@ main() {
 
 	echo "Disabling Swap"
 	sudo dphys-swapfile swapoff &&
-		sudo dphys-swapfile uninstall &&
-		sudo update-rc.d dphys-swapfile remove
+	sudo dphys-swapfile uninstall &&
+	sudo update-rc.d dphys-swapfile remove
 
 	echo
 
