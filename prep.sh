@@ -61,7 +61,9 @@ main() {
 	echo
 
 	installed_kuber_version=$(apt-cache policy kubeadm | grep "Installed" | cut -d ":" -f 2)
-	echo "$installed_kuber_version is currently installed."
+	if ! [ -x "$(command -v kubeadm)" ]; then
+		echo "$installed_kuber_version is currently installed."
+	fi
 	read -r -p " Use latest Kubeadm version? (y/n) " kuber_choice </dev/tty
 	case "$kuber_choice" in
 	n | N)
@@ -86,6 +88,7 @@ main() {
 
 	echo
 
+	echo "Kubeadm $(apt-cache policy kubeadm | grep "Installed" | cut -d ":" -f 2 | awk '{$1=$1;print}') is installed"
 	read -r -p "Do you want to prevent kubeadm from being upgraded? (y/n) " upgrade_kuber </dev/tty
 	case "$upgrade_kuber" in
 	y | Y)
