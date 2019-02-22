@@ -31,7 +31,7 @@ main() {
 	installed_docker_version=$(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 3)
 	echo
 	echo "$installed_docker_version is currently installed."
-	read -r -p "Do you need to install a different version? (no) " docker_choice </dev/tty
+	read -r -p "Do you need to install a different version? (y/n) " docker_choice </dev/tty
 	echo
 	case "$docker_choice" in
 	y | Y)
@@ -62,7 +62,7 @@ main() {
 
 	installed_kuber_version=$(apt-cache policy kubeadm | grep "Installed" | cut -d ":" -f 2)
 	echo "$installed_kuber_version is currently installed."
-	read -r -p " Use latest Kubeadm version? (yes) " kuber_choice </dev/tty
+	read -r -p " Use latest Kubeadm version? (y/n) " kuber_choice </dev/tty
 	case "$kuber_choice" in
 	n | N)
 		read -r -p "Which version of Kubernetes do you want to install (e.g. 1.10.2-00)? " kuber_version </dev/tty
@@ -74,7 +74,7 @@ main() {
 	echo
 
 	echo "Docker $(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 3) is installed"
-	read -r -p "Do you want to prevent docker-ce from being upgraded? (no) " upgrade_docker </dev/tty
+	read -r -p "Do you want to prevent docker-ce from being upgraded? (y/n) " upgrade_docker </dev/tty
 	case $upgrade_docker in
 	y | Y)
 		echo "docker-ce hold" | sudo dpkg --set-selections
@@ -86,8 +86,7 @@ main() {
 
 	echo
 
-	echo "Kubeadm $(apt-cache policy kubeadm | grep "Installed" | cut -d ":" -f 2) is installed"
-	read -r -p "Do you want to prevent kubeadm from being upgraded? (no) " upgrade_kuber </dev/tty
+	read -r -p "Do you want to prevent kubeadm from being upgraded? (y/n) " upgrade_kuber </dev/tty
 	case "$upgrade_kuber" in
 	y | Y)
 		echo "kubeadm hold" | sudo dpkg --set-selections
