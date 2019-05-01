@@ -116,7 +116,7 @@ main() {
 		echo "Please reboot"
 		exit 0
 	elif [[ "$node_type" == "slave" ]]; then
-		echo "Please reboot"
+		echo "Please reboot. Then you can continue with kubeadm (e.g. sudo kubeadm init --token-ttl=0 --pod-network-cidr=10.244.0.0/16)."
 		exit 0
 	fi
 }
