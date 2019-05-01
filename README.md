@@ -10,6 +10,13 @@ This was adapted from a gist by [alexellis](https://gist.github.com/alexellis/fd
 ## Automatic preparation
 To prepare a node with the script, on each node run the following command:  
 
+The safe way...
+```
+wget https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh
+chmod +x prep.sh
+./prep.sh
+```
+or, with single command...
 `curl -sL https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh | sudo bash`
 
 This script:  
