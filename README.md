@@ -17,6 +17,7 @@ chmod +x prep.sh
 ./prep.sh
 ```
 or, with single command...
+
 `curl -sL https://raw.githubusercontent.com/aaronkjones/rpi-k8s-node-prep/master/prep.sh | sudo bash`
 
 This script:  
