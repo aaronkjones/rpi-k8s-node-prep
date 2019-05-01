@@ -62,7 +62,7 @@ main() {
 
 	installed_kuber_version=$(apt-cache policy kubeadm | grep "Installed" | cut -d ":" -f 2)
 	if ! [ -x "$(command -v kubeadm)" ]; then
-		echo "$installed_kuber_version is currently installed."
+		echo "Kubeadm, $installed_kuber_version is currently installed."
 	fi
 	read -r -p " Use latest Kubeadm version? (y/n) " kuber_choice </dev/tty
 	case "$kuber_choice" in
