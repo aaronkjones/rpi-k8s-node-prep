@@ -30,6 +30,9 @@ This script:
 * Backs up cmdline.txt
 * Adds cgroup options to `cmdline.txt`
 * If the node is a "master" it removes `KUBELET_NETWORK_ARGS` from `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf`
+
+After running the script continue this guide from [setup networking](https://github.com/aaronkjones/rpi-k8s-node-prep/blob/master/README.md#setup-networking)
+
 ## Manual node setup
 
 #### Flash Raspbian to a fresh SD card.
