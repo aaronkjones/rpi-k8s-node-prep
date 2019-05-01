@@ -30,7 +30,7 @@ main() {
 
 	installed_docker_version=$(apt-cache policy docker-ce | grep "Installed" | cut -d ":" -f 3)
 	echo
-	echo "$installed_docker_version is currently installed."
+	echo "Docker, $installed_docker_version is currently installed."
 	read -r -p "Do you need to install a different version? (y/n) " docker_choice </dev/tty
 	echo
 	case "$docker_choice" in
